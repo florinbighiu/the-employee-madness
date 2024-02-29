@@ -1,0 +1,277 @@
+/* Works on Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #243368 #111827;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgb(248, 220, 220);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2b3a68;
+  border-radius: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto';
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(248, 220, 220);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  background-image: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248));
+  border-radius: 10px;
+  margin: 1rem 5px 1rem;
+  padding: 1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-image: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248));
+  border-radius: 10px;
+  margin: 1rem 5px 1rem;
+  padding: 1rem;
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  background-image: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248));
+  border-radius: 10px;
+  margin: 1rem 5px 1rem;
+  padding-left: 1.7rem;
+  padding-top: 1rem;
+}
+
+.sorting {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
+  margin: 0.2rem;
+  width: 75%;
+}
+
+
+button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  height: 38px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 16px;
+}
+
+button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.disabled-button {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+select,
+input {
+  appearance: none;
+  background-color: #e2edfc;
+  border: none;
+  cursor: inherit;
+  line-height: inherit;
+  font-size: 16px;
+  font-weight: 200;
+  color: rgb(0, 0, 0);
+  outline: none;
+  border-radius: 10px;
+
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+}
+
+label {
+  font-family: 'JetBrains Mono';
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(255, 245, 245);
+}
+
+.EmployeeTable {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+table tbody tr {
+  background-color: rgb(122, 158, 224);
+}
+
+table thead tr {
+  font-family: 'JetBrains Mono';
+  font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: rgb(76, 110, 185);
+}
+
+table td,
+table th {
+  padding: 0.2rem;
+  padding-left: 1rem;
+}
+
+table button {
+  padding: 1rem 1rem;
+  margin: 0.2rem;
+}
+
+.form {
+  background-image: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248));
+  margin: 3rem 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  border-radius: 25px;
+}
+
+.EmployeeForm {
+  width: 90%;
+  padding: 15px 0 0 0;
+}
+
+.control {
+  width: 100%;
+  padding: 1rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.buttons {
+  font-size: 1.2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+
+.control input,
+.control select {
+  font-size: 1.2rem;
+  padding: 0.2rem;
+}
+
+.control label {
+  color: black
+}
+
+.control .checkbox,
+.control .radio {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.grow {
+  flex: 2;
+  padding-left: 3rem;
+}
+
+.missing {
+  display: flex;
+  align-items: center;
+  place-content: center;
+  flex-direction: column;
+}
+
+.missingTable {
+  text-align: center;
+  font-size: larger;
+  font-family: 'Helvetica', sans-serif;
+  width: 99vw;
+
+}
+
+.equipmentTable .equipment {
+  text-align: center;
+  font-size: larger;
+  font-family: 'Helvetica', sans-serif;
+}

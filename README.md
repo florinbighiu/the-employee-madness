@@ -1,5 +1,12 @@
 # Employee Madness
 
+
+<p align="center" border-radius="25%">
+  <img src="https://github.com/florinbighiu/the-employee-madness/assets/120215264/f0ed46cf-0bb6-45fe-88ee-972a716914f5" width="1250" height="500" title="hover text">
+</p>
+
+
+
 ## Server side
 
 ### Install dependencies

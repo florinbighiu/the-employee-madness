@@ -39,53 +39,76 @@ const EmployeeTable = ({ employees, onDelete, search }) => {
     }
   };
 
+  if (updatedEmployees.length === 0) {
+    return (
+      <div className="empty-state">
+        <h3>No employees found</h3>
+        <p>Try adjusting your filters or add a new employee.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="EmployeeTable">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Level</th>
-            <th>Position</th>
-            <th>Brand</th>
-            <th>Height</th>
-            <th>Attendance</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {updatedEmployees.map((employee) => (
-            <tr key={employee._id}>
-              <td>{employee.name}</td>
-              <td>{employee.level}</td>
-              <td>{employee.position}</td>
-              <td>{employee.brand}</td>
-              <td>{employee.height}</td>
-              <td>
+    <table className="EmployeeTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Position</th>
+          <th>Brand</th>
+          <th>Height</th>
+          <th style={{ textAlign: "right" }}>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {updatedEmployees.map((employee) => (
+          <tr key={employee._id}>
+            <td>
+              <strong>{employee.name}</strong>
+              {employee.missing && (
+                <span className="badge badge-warning" style={{ marginLeft: "0.5rem" }}>
+                  Missing
+                </span>
+              )}
+            </td>
+            <td>
+              <span className="badge">{employee.level}</span>
+            </td>
+            <td>{employee.position}</td>
+            <td>{employee.brand}</td>
+            <td>{employee.height ? `${employee.height} cm` : "—"}</td>
+            <td>
+              <div className="row-actions">
                 <button
                   type="button"
-                  style={{ marginRight: "5rem" }}
+                  className="btn btn-ghost btn-sm"
                   onClick={() => setMissing(employee)}
-                  disabled={employee.missing}
-                  className={employee.missing ? "disabled-button" : "active-button"}>
+                  disabled={employee.missing}>
                   Missing
                 </button>
-
                 <Link to={`/update/${employee._id}`}>
-                  <button type="button">Update</button>
+                  <button type="button" className="btn btn-soft btn-sm">
+                    Update
+                  </button>
                 </Link>
-                <button type="button" onClick={() => onDelete(employee._id)}>
-                  Delete
-                </button>
-                <button type="button" onClick={() => randomize(employee)}>
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-sm"
+                  onClick={() => randomize(employee)}>
                   Randomize
                 </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm"
+                  onClick={() => onDelete(employee._id)}>
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

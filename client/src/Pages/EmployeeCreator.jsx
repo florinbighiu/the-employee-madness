@@ -28,13 +28,11 @@ const EmployeeCreator = () => {
   };
 
   return (
-    <div className="form">
     <EmployeeForm
       onCancel={() => navigate("/")}
       disabled={loading}
       onSave={handleCreateEmployee}
     />
-    </div>
   );
 };
 

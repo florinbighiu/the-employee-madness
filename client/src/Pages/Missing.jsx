@@ -35,26 +35,55 @@ const Missing = () => {
   };
 
   return (
-    <div className="missing">
-      <h2>Missing Employees</h2>
-      {missingEmployees.length === 0 ? (
-        <p>No missing employees found.</p>
-      ) : (
-        <table className="missingTable">
-          <tbody>
-            {missingEmployees.map((employee) => (
-              <tr key={employee._id}>
-                <td>{employee.name}</td>
-                <td>
-                  <button type="button" onClick={() => removeFromMissing(employee)}>
-                    Remove
-                  </button>
-                </td>
+    <div>
+      <div className="page-head">
+        <div>
+          <h1>Missing Employees</h1>
+          <span className="subtitle">
+            {missingEmployees.length} employee{missingEmployees.length === 1 ? "" : "s"} flagged as missing
+          </span>
+        </div>
+      </div>
+
+      <div className="card table-wrap">
+        {missingEmployees.length === 0 ? (
+          <div className="empty-state">
+            <h3>All accounted for</h3>
+            <p>No employees are currently flagged as missing.</p>
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th style={{ textAlign: "right" }}>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {missingEmployees.map((employee) => (
+                <tr key={employee._id}>
+                  <td>
+                    <strong>{employee.name}</strong>
+                    <span className="badge badge-warning" style={{ marginLeft: "0.5rem" }}>
+                      Missing
+                    </span>
+                  </td>
+                  <td>
+                    <div className="row-actions">
+                      <button
+                        type="button"
+                        className="btn btn-soft btn-sm"
+                        onClick={() => removeFromMissing(employee)}>
+                        Mark as Found
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

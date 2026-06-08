@@ -70,56 +70,76 @@ const EquipmentManagement = () => {
   };
 
   return (
-    <div className="equipment-management">
-      <h1>Equipment Management</h1>
-      <div className="input-container">
+    <div>
+      <div className="page-head">
+        <div>
+          <h1>Equipment</h1>
+          <span className="subtitle">{equipmentList.length} items in inventory</span>
+        </div>
+        <button className="btn btn-ghost" onClick={() => navigate("/")}>
+          Back to Employees
+        </button>
+      </div>
+
+      <div className="card toolbar equipment-toolbar">
         <input
-          className="input-field"
           type="text"
           name="name"
-          placeholder="Equipment Name"
+          placeholder="Equipment name"
           value={newEquipment.name}
           onChange={handleInputChange}
         />
         <input
-          className="input-field"
           type="number"
           name="amount"
           placeholder="Amount"
           value={newEquipment.amount}
           onChange={handleInputChange}
         />
-        <button className="create-button" onClick={handleCreateEquipment}>
-          Create Equipment
+        <button type="button" onClick={handleCreateEquipment}>
+          + Add Equipment
         </button>
-        <button onClick={() => navigate("/")}>Cancel</button>
       </div>
-      <div className="equipment">
-      {equipmentList.length === 0 ? (
-        <p>No equipments found.</p>
-      ) : (
-        <table className="equipmentTable">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-          <tbody>
-            {equipmentList.map((eq) => (
-              <tr key={eq._id}>
-                <td>{eq.name}</td>
-                <td>{eq.amount}</td>
-                <td>
-                  <button type="button" onClick={() => handleDelete(eq._id)}>
-                    Remove
-                  </button>
-                </td>
+
+      <div className="card table-wrap">
+        {equipmentList.length === 0 ? (
+          <div className="empty-state">
+            <h3>No equipment yet</h3>
+            <p>Add your first item using the form above.</p>
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th style={{ textAlign: "right" }}>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {equipmentList.map((eq) => (
+                <tr key={eq._id}>
+                  <td>
+                    <strong>{eq.name}</strong>
+                  </td>
+                  <td>
+                    <span className="badge badge-muted">{eq.amount}</span>
+                  </td>
+                  <td>
+                    <div className="row-actions">
+                      <button
+                        type="button"
+                        className="btn btn-danger btn-sm"
+                        onClick={() => handleDelete(eq._id)}>
+                        Remove
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

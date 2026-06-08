@@ -1,3 +1,2 @@
-.EmployeeTable {
-  padding: 0.5rem;
-}
+/* Table visuals live in the shared design system (index.css).
+   This file is kept for component-scoped overrides if needed. */

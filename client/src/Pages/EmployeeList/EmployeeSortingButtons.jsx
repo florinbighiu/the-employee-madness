@@ -1,12 +1,29 @@
 import React from "react";
 
-const EmployeeSortingButtons = ({ onSort }) => (
+const options = [
+  { key: "firstName", label: "First Name" },
+  { key: "lastName", label: "Last Name" },
+  { key: "middleName", label: "Middle Name" },
+  { key: "position", label: "Position" },
+  { key: "level", label: "Level" },
+];
+
+const EmployeeSortingButtons = ({ onSort, active, order }) => (
   <div className="sorting">
-    <button onClick={() => onSort("firstName")}>Sort by First Name</button>
-    <button onClick={() => onSort("lastName")}>Sort by Last Name</button>
-    <button onClick={() => onSort("middleName")}>Sort by Middle Name</button>
-    <button onClick={() => onSort("position")}>Sort by Position</button>
-    <button onClick={() => onSort("level")}>Sort by Level</button>
+    {options.map(({ key, label }) => {
+      const isActive = active === key;
+      return (
+        <button
+          key={key}
+          type="button"
+          className={isActive ? "btn btn-sm" : "btn btn-ghost btn-sm"}
+          onClick={() => onSort(key)}
+        >
+          {label}
+          {isActive ? (order === "asc" ? " ↑" : " ↓") : ""}
+        </button>
+      );
+    })}
   </div>
 );
 

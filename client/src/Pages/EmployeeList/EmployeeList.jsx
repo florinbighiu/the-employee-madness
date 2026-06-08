@@ -133,28 +133,45 @@ const EmployeeList = () => {
 
   return (
     <div>
-      <div className="header">
-      <EmployeeSortingButtons onSort={sortEmployees} />
+      <div className="page-head">
+        <div>
+          <h1>Employees</h1>
+          <span className="subtitle">
+            {sortedEmployees.length} of {employees.length} employees
+          </span>
+        </div>
       </div>
-      <div className="filters">
-      <FilterDropdown
+
+      <div className="card toolbar">
+        <span className="toolbar-label">Sort by</span>
+        <EmployeeSortingButtons
+          onSort={sortEmployees}
+          active={sortCriteria}
+          order={sortOrder}
+        />
+      </div>
+
+      <div className="card toolbar">
+        <FilterDropdown
           id="positionFilter"
-          label="Position:  "
+          label="Position"
           options={uniquePositions}
           value={positionFilter}
           onChange={(e) => setPositionFilter(e.target.value)}
         />
         <FilterDropdown
           id="levelFilter"
-          label="Level: "
+          label="Level"
           options={uniqueLevels}
           value={levelFilter}
           onChange={(e) => setLevelFilter(e.target.value)}
         />
+        <span className="spacer" />
         <SearchInput value={searchQuery} onChange={setSearchQuery} />
       </div>
-      <div className="table">
-      <EmployeeTable employees={sortedEmployees} onDelete={handleDelete} />
+
+      <div className="card table-wrap">
+        <EmployeeTable employees={sortedEmployees} onDelete={handleDelete} />
       </div>
     </div>
   );

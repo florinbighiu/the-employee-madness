@@ -5,16 +5,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import mongoose from "mongoose";
-import names from "../populate/names.json" assert {
+import names from "../populate/names.json" with {
   type: "json",
 }
-import levels from "../populate/levels.json" assert {
+import levels from "../populate/levels.json" with {
   type: "json",
 }
-import positions from "../populate/positions.json" assert {
+import positions from "../populate/positions.json" with {
   type: "json",
 }
-import brands from "../populate/brands.json" assert {
+import brands from "../populate/brands.json" with {
   type: "json"
 }
 import EmployeeModel from "../db/employee.model.js"

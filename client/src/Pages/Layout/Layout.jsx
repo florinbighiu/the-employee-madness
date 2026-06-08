@@ -1,28 +1,39 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 import "./Layout.css";
 
+const navClass = ({ isActive }) =>
+  isActive ? "nav-link active" : "nav-link";
+
 const Layout = () => (
   <div className="Layout">
-    <nav>
-      <ul>
-        <li className="grow">
-          <Link to="/">Employees</Link>
-        </li>
-        <li>
-          <Link to="/create">
-            <button type="button">Create Employee</button>
-          </Link>
-          <Link to="equipment">
-            <button type="button">Equipment</button>
-          </Link>
-          <Link to="missing">
-            <button type="button">Missing</button>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-    <Outlet />
+    <header className="navbar">
+      <div className="navbar-inner">
+        <NavLink to="/" className="brand" end>
+          <span className="brand-mark">EM</span>
+          <span className="brand-text">Employee Madness</span>
+        </NavLink>
+
+        <nav className="nav-links">
+          <NavLink to="/" className={navClass} end>
+            Employees
+          </NavLink>
+          <NavLink to="/equipment" className={navClass}>
+            Equipment
+          </NavLink>
+          <NavLink to="/missing" className={navClass}>
+            Missing
+          </NavLink>
+          <NavLink to="/create" className="btn btn-sm nav-cta">
+            + New Employee
+          </NavLink>
+        </nav>
+      </div>
+    </header>
+
+    <main className="page">
+      <Outlet />
+    </main>
   </div>
 );
 
